@@ -34,4 +34,10 @@ void test()
 	const char* var34 = "some comment 10 /* \
 // */"; printf("%s\n", var34); // /* some somment 10 */
 
+	/*some comment 11*/
+	const char* VARNAME(i) = "some comment 11 '\"'\"'\'";  printf("%s\n", VARNAME(i));
+
+	/*some comment 12*/
+	const char* VARNAME(i) = "some comment 12 '\"'\"'\'"; char VARNAME(ii) = '\'';  printf("%s\n", VARNAME(i));
+
 }

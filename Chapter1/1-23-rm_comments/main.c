@@ -18,6 +18,8 @@ enum Status {
 	NORMAL,			// 正常状态，即非下述任何状态，是普通的代码
 	SINGLE_QUOTING, // 字符常量定义中
 	DOUBLE_QUOTING, // 字符串常量定义中
+	SINGLE_QUOTING_BACKSLASHING,		// 字符内含有转义字符 '\\'
+	DOUBLE_QUOTING_BACKSLASHING,		// 字符串内含有转义字符 '\\'
 	C_COMMENTING,	// C风格注释中
 	CPP_COMMENTING, // C++风格注释中
 };
@@ -36,16 +38,26 @@ void rm_comment2()
 
 		switch (status) {
 		case SINGLE_QUOTING:
-			if (c == '\'' && i > 1 && buf[i - 2] != '\\') { // 找到了字符常量的结尾单引号
+			if (c == '\\') {
+				status = SINGLE_QUOTING_BACKSLASHING;
+			} else if (c == '\'') { // 找到了字符常量的结尾单引号
 				status = NORMAL;
 			}
 			break;
 		case DOUBLE_QUOTING:
-			if (c == '"' && i > 1 && buf[i - 2] != '\\') { // 找到了字符串常量的结尾双引号
+			if (c == '\\') {
+				status = DOUBLE_QUOTING_BACKSLASHING;
+			} else if (c == '"') { // 找到了字符串常量的结尾双引号
 				status = NORMAL;
 			} else if (c == '%') { // 我们自己要输出字符串，如果字符串包含%转义，直接传给printf会缺少参数
 				buf[i++] = '%';
 			}
+			break;
+		case SINGLE_QUOTING_BACKSLASHING:
+			status = SINGLE_QUOTING;
+			break;
+		case DOUBLE_QUOTING_BACKSLASHING:
+			status = DOUBLE_QUOTING;
 			break;
 		case C_COMMENTING:
 			if (c == '/' && i > 1 && buf[i - 2] == '*') { // 找到了C风格注释结尾，注释结束

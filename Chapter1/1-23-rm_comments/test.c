@@ -44,6 +44,10 @@ void test()
 	/*some comment 13*/
 	const char* VARNAME(i) = "some comment 13 \\"; char VARNAME(ii) = '\\';  printf("%s\n", VARNAME(i));
 
+	/*some comment 14*/
+	const char* var48 = "some comment 14 \
+\\asdf"; printf("%s\n", var48);
+
 }
 
 

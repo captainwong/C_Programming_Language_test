@@ -1,7 +1,6 @@
 #include <stdio.h>
 
 #define TAB_SIZE 4
-#define LINE_SIZE 1024
 
 int main()
 {

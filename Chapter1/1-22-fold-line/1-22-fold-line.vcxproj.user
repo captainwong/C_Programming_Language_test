@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LocalDebuggerCommandArguments>&lt; "E:\dev_learning_cpp\C_Programming_Language_test\Chapter1\1-13-word-len-histogram\main.c"</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>&lt; E:\dev_learning_cpp\C_Programming_Language_test\Chapter1\1-22-fold-line\input.txt &gt; E:\dev_learning_cpp\C_Programming_Language_test\Chapter1\1-22-fold-line\output.txt</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
